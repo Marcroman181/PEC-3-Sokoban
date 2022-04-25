@@ -10,12 +10,14 @@ public class SaveLevel
 
     private static string FILE_EXTENSION = ".json";
 
-    public static void Save(string nameLevel, Level level)
+    public static bool Save(string nameLevel, Level level)
     {
         string path = PATH_FILE + nameLevel + FILE_EXTENSION;
         if (!System.IO.File.Exists(path))
         {
             File.WriteAllText(path, JsonUtility.ToJson(level));
+            return true;
         }
+        return false;
     }
 }

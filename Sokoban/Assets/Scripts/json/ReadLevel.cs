@@ -10,6 +10,7 @@ public class ReadLevel
     private static string PATH_FILE = "Assets/Resources/Levels/";
 
     private static string FILE_EXTENSION = ".json";
+    private static string FILE_META_EXTENSION = ".json.meta";
 
     public static List<Box> Read(string nameLevel)
     {
@@ -21,5 +22,17 @@ public class ReadLevel
             return Level.BoxList;
         }
         return null;
+    }
+
+    public static List<string> AllCustomLevels()
+    {
+        List<string> files = new List<string>();
+        foreach (string file in System.IO.Directory.GetFiles(PATH_FILE)) {
+            if (file.Contains(FILE_EXTENSION) && !file.Contains(FILE_META_EXTENSION))
+            {
+                files.Add(file.Replace(PATH_FILE, "").Split('.')[0]);
+            }
+        };
+        return files;
     }
 }

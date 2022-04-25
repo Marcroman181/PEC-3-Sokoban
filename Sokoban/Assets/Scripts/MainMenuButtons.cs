@@ -9,8 +9,16 @@ public class MainMenuButtons : MonoBehaviour
     {
         SceneManager.LoadScene("Level");
     }
+    public void PlayCustom()
+    {
+        transform.Find("SelectLevelModal").gameObject.SetActive(true);
+    }
     public void LevelEditor()
     {
         SceneManager.LoadScene("LevelEditor");
+    }
+    public void Exit()
+    {
+        Application.Quit();
     }
 }

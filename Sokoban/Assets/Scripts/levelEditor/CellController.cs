@@ -16,8 +16,8 @@ public class CellController : MonoBehaviour
         int boxNumber = int.Parse(Regex.Replace(gameObject.name, "[^0-9]", ""));
 
         Box = new Box();  
-        Box.positionX = boxNumber / 15;
-        Box.positionY = boxNumber % 15;
+        Box.positionY = boxNumber / 15;
+        Box.positionX = boxNumber % 15;
         Box.boxStatus = BoxStatus.EMPTY;
         Image = gameObject.GetComponent<Image>();
 

@@ -53,38 +53,54 @@ public class BoxController : MonoBehaviour
         playerRotationY = other.gameObject.transform.rotation.eulerAngles.y;
         if (playerRotationY >= 80 && playerRotationY <= 100)
         {
-            RaycastHit hit;
-            if (!Physics.Raycast(transform.position, new Vector3(1, 0, 0), out hit, 1f, mask))
+            if (Mathf.Abs(Mathf.Abs(transform.position.x) - Mathf.Abs(other.gameObject.transform.position.x)) > Mathf.Abs(Mathf.Abs(transform.position.z) - Mathf.Abs(other.gameObject.transform.position.z))
+                && transform.position.x > other.gameObject.transform.position.x)
             {
-                transform.position = new Vector3(transform.position.x + 1, transform.position.y, transform.position.z);
-                pushed = true;
+                RaycastHit hit;
+                if (!Physics.Raycast(transform.position, new Vector3(1, 0, 0), out hit, 1f, mask))
+                {
+                    transform.position = new Vector3(transform.position.x + 1, transform.position.y, transform.position.z);
+                    pushed = true;
+                }
             }
         }
-        else if (playerRotationY >= 260 && playerRotationY <= 280)
+        else if (playerRotationY >= 260 && playerRotationY <= 280 || playerRotationY >= -80 && playerRotationY <= -100)
         {
-            RaycastHit hit;
-            if (!Physics.Raycast(transform.position, new Vector3(-1, 0, 0), out hit, 1f, mask))
+            if (Mathf.Abs(Mathf.Abs(transform.position.x) - Mathf.Abs(other.gameObject.transform.position.x)) > Mathf.Abs((Mathf.Abs(transform.position.z) - Mathf.Abs(other.gameObject.transform.position.z)))
+                && transform.position.x < other.gameObject.transform.position.x)
             {
-                transform.position = new Vector3(transform.position.x - 1, transform.position.y, transform.position.z);
-                pushed = true;
+                RaycastHit hit;
+                if (!Physics.Raycast(transform.position, new Vector3(-1, 0, 0), out hit, 1f, mask))
+                {
+                    transform.position = new Vector3(transform.position.x - 1, transform.position.y, transform.position.z);
+                    pushed = true;
+                }
             }
         }
         else if (playerRotationY >= 350 && playerRotationY <= 370 || playerRotationY >= -10 && playerRotationY <= 10)
         {
-            RaycastHit hit;
-            if (!Physics.Raycast(transform.position, new Vector3(0, 0, 1), out hit, 1f, mask))
+            if (Mathf.Abs(Mathf.Abs(transform.position.x) - Mathf.Abs(other.gameObject.transform.position.x)) < Mathf.Abs((Mathf.Abs(transform.position.z) - Mathf.Abs(other.gameObject.transform.position.z)))
+                && transform.position.z > other.gameObject.transform.position.z)
             {
-                transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.z + 1);
-                pushed = true;
+                RaycastHit hit;
+                if (!Physics.Raycast(transform.position, new Vector3(0, 0, 1), out hit, 1f, mask))
+                {
+                    transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.z + 1);
+                    pushed = true;
+                }
             }
         }
         else if (playerRotationY >= 170 && playerRotationY <= 190)
         {
-            RaycastHit hit;
-            if (!Physics.Raycast(transform.position, new Vector3(0, 0, -1), out hit, 1f, mask))
+            if ((Mathf.Abs(Mathf.Abs(transform.position.x) - Mathf.Abs(other.gameObject.transform.position.x))) < Mathf.Abs((Mathf.Abs(transform.position.z) - Mathf.Abs(other.gameObject.transform.position.z)))
+                && transform.position.z < other.gameObject.transform.position.z)
             {
-                transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.z - 1);
-                pushed = true;
+                RaycastHit hit;
+                if (!Physics.Raycast(transform.position, new Vector3(0, 0, -1), out hit, 1f, mask))
+                {
+                    transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.z - 1);
+                    pushed = true;
+                }
             }
         }
     }

@@ -90,7 +90,7 @@ public class GameManager : MonoBehaviour
         {
             Canvas.transform.Find("CompleteMenu").transform.Find("Text").GetComponent<Text>().text = "Level " + GameConfiguration.actualLevel + " Completed!";
         }
-        if (!GameConfiguration.CustomLevel && GameConfiguration.actualLevel < 9)
+        if (!GameConfiguration.CustomLevel && GameConfiguration.actualLevel < 10)
         {
             Canvas.transform.Find("CompleteMenu").transform.Find("NextLevelButton").gameObject.SetActive(true);
         }
